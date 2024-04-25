@@ -8,7 +8,7 @@
 
   <ItemGroup>
     <Folder Include="Controllers\" />
-    <Folder Include="Views\Shared\" />
+    <Folder Include="Sql_Scripts\" />
   </ItemGroup>
 
   <ItemGroup>

@@ -62,3 +62,5 @@ C:\Users\2147037\Downloads\H24-4204D5-ProjetFinal_2147037\ProjetFinal_2147037\ob
 C:\Users\2147037\Downloads\H24-4204D5-ProjetFinal_2147037\ProjetFinal_2147037\obj\Debug\net6.0\ProjetFinal_2147037.pdb
 C:\Users\2147037\Downloads\H24-4204D5-ProjetFinal_2147037\ProjetFinal_2147037\obj\Debug\net6.0\ProjetFinal_2147037.genruntimeconfig.cache
 C:\Users\2147037\Downloads\H24-4204D5-ProjetFinal_2147037\ProjetFinal_2147037\obj\Debug\net6.0\ref\ProjetFinal_2147037.dll
+C:\Users\2147037\Downloads\H24-4204D5-ProjetFinal_2147037\ProjetFinal_2147037\obj\Debug\net6.0\ProjetFinal_2147037.RazorAssemblyInfo.cache
+C:\Users\2147037\Downloads\H24-4204D5-ProjetFinal_2147037\ProjetFinal_2147037\obj\Debug\net6.0\ProjetFinal_2147037.RazorAssemblyInfo.cs

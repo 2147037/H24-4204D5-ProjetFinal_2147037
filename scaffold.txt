@@ -1,0 +1,5 @@
+--Migrate--
+evolve migrate sqlserver -c "Server=.\SQLEXPRESS;Initial Catalog=ProjetFinal_2147037;Integrated Security=True;Persist Security Info=False;Pooling=False;MultipleActiveResultSets=False;Encrypt=False;TrustServerCertificate=False" -s Personne -s Television --target-version 1.1
+
+--Scaffold--
+dotnet ef dbcontext scaffold Name=ProjetFinal_2147037 Microsoft.EntityFrameworkCore.SqlServer -o Models --context-dir Data --data-annotations --force
