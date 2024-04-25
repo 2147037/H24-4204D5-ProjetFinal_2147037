@@ -1,0 +1,74 @@
+﻿@model IEnumerable<ProjetFinal_2147037.Models.VwActeurPersonnageEmission>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ActeurId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nom)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Prenom)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PersonnageId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NomPersonnage)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EmissionTelevisionId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NomEmission)
+            </th>
+            <
+            <th>
+                @Html.DisplayNameFor(model => model.Cote)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ActeurId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nom)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Prenom)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PersonnageId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NomPersonnage)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EmissionTelevisionId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NomEmission)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Cote)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

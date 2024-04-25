@@ -1,0 +1,65 @@
+﻿@model ProjetFinal_2147037.Models.EmissionTelevision
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Edit</h1>
+
+<h4>EmissionTelevision</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="EmissionTelevisionId" />
+            <div class="form-group">
+                <label asp-for="Nom" class="control-label"></label>
+                <input asp-for="Nom" class="form-control" />
+                <span asp-validation-for="Nom" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Descriptions" class="control-label"></label>
+                <input asp-for="Descriptions" class="form-control" />
+                <span asp-validation-for="Descriptions" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="EstCoreen" /> @Html.DisplayNameFor(model => model.EstCoreen)
+                </label>
+            </div>
+            <div class="form-group">
+                <label asp-for="Cote" class="control-label"></label>
+                <input asp-for="Cote" class="form-control" />
+                <span asp-validation-for="Cote" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NbVisionnement" class="control-label"></label>
+                <input asp-for="NbVisionnement" class="form-control" />
+                <span asp-validation-for="NbVisionnement" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CoutProduction" class="control-label"></label>
+                <input asp-for="CoutProduction" class="form-control" />
+                <span asp-validation-for="CoutProduction" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PlateformeId" class="control-label"></label>
+                <select asp-for="PlateformeId" class="form-control" asp-items="ViewBag.PlateformeId"></select>
+                <span asp-validation-for="PlateformeId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

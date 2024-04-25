@@ -27,6 +27,7 @@ namespace ProjetFinal_2147037.Data
         public virtual DbSet<Plateforme> Plateformes { get; set; } = null!;
         public virtual DbSet<Serie> Series { get; set; } = null!;
         public virtual DbSet<Utilisateur> Utilisateurs { get; set; } = null!;
+        public virtual DbSet<VwActeurPersonnageEmission> VwActeurPersonnageEmissions { get; set; } = null!;
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -114,6 +115,11 @@ namespace ProjetFinal_2147037.Data
                     .HasForeignKey(d => d.PlateformeId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_Utilisateur_PlateformeID");
+            });
+
+            modelBuilder.Entity<VwActeurPersonnageEmission>(entity =>
+            {
+                entity.ToView("vw_ActeurPersonnageEmission", "Personne");
             });
 
             OnModelCreatingPartial(modelBuilder);

@@ -22,6 +22,14 @@ app.UseRouting();
 
 app.UseAuthorization();
 
+app.UseEndpoints(endpoints =>
+{
+    endpoints.MapControllerRoute(
+        name:"default",
+        pattern: "{controller=EmissionTelevisions}/{action=IndexAvecViewSQL}"
+        );
+});
+
 app.MapRazorPages();
 
 app.Run();
