@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using ProjetFinal_2147037.Data;
 using ProjetFinal_2147037.Models;
@@ -31,24 +32,29 @@ namespace ProjetFinal_2147037.Controllers
             return View(await _context.VwActeurPersonnageEmissions.ToListAsync());
         }
 
-        // GET: EmissionTelevisions/Details/5
-        public async Task<IActionResult> Details(int? id)
+        public async Task<IActionResult> InfoUtilisateur()
         {
-            if (id == null || _context.EmissionTelevisions == null)
-            {
-                return NotFound();
-            }
-
-            var emissionTelevision = await _context.EmissionTelevisions
-                .Include(e => e.Plateforme)
-                .FirstOrDefaultAsync(m => m.EmissionTelevisionId == id);
-            if (emissionTelevision == null)
-            {
-                return NotFound();
-            }
-
-            return View(emissionTelevision);
+            return View(await _context.Utilisateurs.ToListAsync());
         }
+
+        //// GET: EmissionTelevisions/Details/5
+        //public async Task<IActionResult> Details(int? id)
+        //{
+        //    if (id == null || _context.EmissionTelevisions == null)
+        //    {
+        //        return NotFound();
+        //    }
+
+        //    var emissionTelevision = await _context.EmissionTelevisions
+        //        .Include(e => e.Plateforme)
+        //        .FirstOrDefaultAsync(m => m.EmissionTelevisionId == id);
+        //    if (emissionTelevision == null)
+        //    {
+        //        return NotFound();
+        //    }
+
+        //    return View(emissionTelevision);
+        //}
 
         // GET: EmissionTelevisions/Create
         public IActionResult Create()
@@ -62,16 +68,33 @@ namespace ProjetFinal_2147037.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("EmissionTelevisionId,Nom,Descriptions,EstCoreen,Cote,NbVisionnement,CoutProduction,PlateformeId")] EmissionTelevision emissionTelevision)
+        public async Task<IActionResult> Create(VM_UtilisateurMotDePasse utilisateur)
         {
-            if (ModelState.IsValid)
+            bool existe = await _context.Utilisateurs.AnyAsync(x=>x.Pseudo == utilisateur.Pseudo);
+            if (existe)
             {
-                _context.Add(emissionTelevision);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                ModelState.AddModelError("Pseudo", "Ce pseudo est déjà utilisé.");
+                return View(utilisateur);
             }
-            ViewData["PlateformeId"] = new SelectList(_context.Plateformes, "PlateformeId", "PlateformeId", emissionTelevision.PlateformeId);
-            return View(emissionTelevision);
+
+            string query = "EXEC Personne.USP_Chiffrement @Pseudo, @NoTelephone, @PlateformID, @MotDePasse";
+            List<SqlParameter> parameters = new List<SqlParameter>
+            {
+                new SqlParameter{ParameterName="@Pseudo", Value = utilisateur.Pseudo},
+                new SqlParameter{ParameterName="@NoTelephone", Value = utilisateur.NoTelephone},
+                new SqlParameter{ParameterName="@PlateformID", Value = utilisateur.PlateformeId},
+                new SqlParameter{ParameterName="@MotDePasse", Value = utilisateur.MotDePasseHache},
+            };
+            try
+            {
+                await _context.Database.ExecuteSqlRawAsync(query, parameters.ToArray());
+            }
+            catch(Exception ex)
+            {
+                ModelState.AddModelError("", "Une erreur est survenue. Veuillez réessayez.");
+                return View(utilisateur);
+            }
+            return RedirectToAction("InfoUtilisateur");
         }
 
         // GET: EmissionTelevisions/Edit/5

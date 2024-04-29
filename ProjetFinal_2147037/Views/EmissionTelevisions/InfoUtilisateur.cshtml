@@ -1,0 +1,42 @@
+﻿@model IEnumerable<ProjetFinal_2147037.Models.Utilisateur>
+
+@{
+    ViewData["Title"] = "InfoUtilisateur";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>InfoUtilisateur</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Pseudo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NoTelephone)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PlateformeId)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Pseudo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NoTelephone)
+            </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PlateformeId)
+                </td>
+        </tr>
+}
+    </tbody>
+</table>

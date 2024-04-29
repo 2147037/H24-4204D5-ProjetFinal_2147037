@@ -51,6 +51,8 @@ CREATE TABLE Personne.Utilisateur(
 	UtilisateurID int IDENTITY (1,1),
 	Pseudo nvarchar(25) NOT NULL,
 	NoTelephone CHAR(10) NOT NULL,
+	MotDePasse nvarchar(40),
+	MotDePasseHache varbinary(max),
 	PlateformeID int NOT NULL,
 	CONSTRAINT PK_Utilisateur_UtilisateurID PRIMARY KEY (UtilisateurID)
 );

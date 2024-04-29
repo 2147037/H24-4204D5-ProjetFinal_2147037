@@ -1,3 +1,4 @@
+C:\Users\2147037\Downloads\H24-4204D5-ProjetFinal_2147037\ProjetFinal_2147037\bin\Debug\net6.0\MessagePack.dll
 C:\Users\2147037\Downloads\H24-4204D5-ProjetFinal_2147037\ProjetFinal_2147037\bin\Debug\net6.0\appsettings.Development.json
 C:\Users\2147037\Downloads\H24-4204D5-ProjetFinal_2147037\ProjetFinal_2147037\bin\Debug\net6.0\appsettings.json
 C:\Users\2147037\Downloads\H24-4204D5-ProjetFinal_2147037\ProjetFinal_2147037\bin\Debug\net6.0\ProjetFinal_2147037.staticwebassets.runtime.json
@@ -7,7 +8,6 @@ C:\Users\2147037\Downloads\H24-4204D5-ProjetFinal_2147037\ProjetFinal_2147037\bi
 C:\Users\2147037\Downloads\H24-4204D5-ProjetFinal_2147037\ProjetFinal_2147037\bin\Debug\net6.0\ProjetFinal_2147037.dll
 C:\Users\2147037\Downloads\H24-4204D5-ProjetFinal_2147037\ProjetFinal_2147037\bin\Debug\net6.0\ProjetFinal_2147037.pdb
 C:\Users\2147037\Downloads\H24-4204D5-ProjetFinal_2147037\ProjetFinal_2147037\bin\Debug\net6.0\Humanizer.dll
-C:\Users\2147037\Downloads\H24-4204D5-ProjetFinal_2147037\ProjetFinal_2147037\bin\Debug\net6.0\MessagePack.dll
 C:\Users\2147037\Downloads\H24-4204D5-ProjetFinal_2147037\ProjetFinal_2147037\bin\Debug\net6.0\MessagePack.Annotations.dll
 C:\Users\2147037\Downloads\H24-4204D5-ProjetFinal_2147037\ProjetFinal_2147037\bin\Debug\net6.0\Microsoft.AspNetCore.Razor.Language.dll
 C:\Users\2147037\Downloads\H24-4204D5-ProjetFinal_2147037\ProjetFinal_2147037\bin\Debug\net6.0\Microsoft.Bcl.AsyncInterfaces.dll
