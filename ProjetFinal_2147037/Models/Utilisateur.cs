@@ -25,8 +25,6 @@ namespace ProjetFinal_2147037.Models
         [StringLength(10)]
         [Unicode(false)]
         public string NoTelephone { get; set; } = null!;
-        [StringLength(40)]
-        public string? MotDePasse { get; set; }
         public byte[]? MotDePasseHache { get; set; }
         [Column("PlateformeID")]
         public int PlateformeId { get; set; }

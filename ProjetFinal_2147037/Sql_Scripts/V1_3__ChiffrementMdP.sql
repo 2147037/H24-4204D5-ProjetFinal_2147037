@@ -32,14 +32,19 @@ BEGIN
 	UPDATE Personne.Utilisateur
 	Set MotDePasseHache = EncryptByKey(KEY_GUID('MaSuperCle'),MotDePasse);
 
-	Close Symmetric KEY MaSuperCle;
+	Close Symmetric KEY MaSuperCle
 
+	
 
-END
+END	
 GO
 
 Execute Personne.USP_ModificationUtilisateur_Chiffrement
 
+GO
+
+Alter table Personne.Utilisateur
+Drop Column MotDePasse
 
 
 --Create Function Personne.ufn_PasswordHash

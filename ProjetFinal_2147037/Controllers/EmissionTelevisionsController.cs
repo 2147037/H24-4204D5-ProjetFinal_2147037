@@ -38,31 +38,31 @@ namespace ProjetFinal_2147037.Controllers
 
         public async Task<IActionResult> InfoUtilisateur()
         {
-            List<Utilisateur> users = await _context.Utilisateurs.ToListAsync();
-            string query = "EXEC Personne.USP_ModificationUtilisateur_Chiffrement @Pseudo, @MotDePasse";
-            foreach (Utilisateur user in users)
-            {
-                VM_UtilisateurMotDePasse vM_UtilisateurMotDePasse = new VM_UtilisateurMotDePasse()
-                {
-                    Pseudo = user.Pseudo,
-                    NoTelephone = user.NoTelephone,
-                    PlateformeId = user.PlateformeId,
-                    MotDePasseHache = user.MotDePasse
-                };
-                List<SqlParameter> parameters = new List<SqlParameter>
-                {
-                new SqlParameter{ParameterName="@Pseudo", Value = vM_UtilisateurMotDePasse.Pseudo},
-                new SqlParameter{ParameterName="@MotDePasse", Value = vM_UtilisateurMotDePasse.MotDePasseHache},
-                };
-                try
-                {
-                    await _context.Database.ExecuteSqlRawAsync(query, parameters.ToArray());
-                }
-                catch (Exception ex)
-                {
-                    throw;
-                }
-            }
+            //List<Utilisateur> users = await _context.Utilisateurs.ToListAsync();
+            //string query = "EXEC Personne.USP_ModificationUtilisateur_Chiffrement @Pseudo, @MotDePasse";
+            //foreach (Utilisateur user in users)
+            //{
+            //    VM_UtilisateurMotDePasse vM_UtilisateurMotDePasse = new VM_UtilisateurMotDePasse()
+            //    {
+            //        Pseudo = user.Pseudo,
+            //        NoTelephone = user.NoTelephone,
+            //        PlateformeId = user.PlateformeId,
+            //        MotDePasseHache = user.MotDePasse
+            //    };
+            //    List<SqlParameter> parameters = new List<SqlParameter>
+            //    {
+            //    new SqlParameter{ParameterName="@Pseudo", Value = vM_UtilisateurMotDePasse.Pseudo},
+            //    new SqlParameter{ParameterName="@MotDePasse", Value = vM_UtilisateurMotDePasse.MotDePasseHache},
+            //    };
+            //    try
+            //    {
+            //        await _context.Database.ExecuteSqlRawAsync(query, parameters.ToArray());
+            //    }
+            //    catch (Exception ex)
+            //    {
+            //        throw;
+            //    }
+            //}
 
             return View(await _context.Utilisateurs.ToListAsync());
         }
