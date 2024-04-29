@@ -30,61 +30,46 @@ namespace ProjetFinal_2147037.Controllers
         public async Task<IActionResult> IndexAvecViewSQL()
         {
             
-
-            
             
             return View(await _context.VwActeurPersonnageEmissions.ToListAsync());
         }
 
         public async Task<IActionResult> InfoUtilisateur()
         {
-            //List<Utilisateur> users = await _context.Utilisateurs.ToListAsync();
-            //string query = "EXEC Personne.USP_ModificationUtilisateur_Chiffrement @Pseudo, @MotDePasse";
-            //foreach (Utilisateur user in users)
-            //{
-            //    VM_UtilisateurMotDePasse vM_UtilisateurMotDePasse = new VM_UtilisateurMotDePasse()
-            //    {
-            //        Pseudo = user.Pseudo,
-            //        NoTelephone = user.NoTelephone,
-            //        PlateformeId = user.PlateformeId,
-            //        MotDePasseHache = user.MotDePasse
-            //    };
-            //    List<SqlParameter> parameters = new List<SqlParameter>
-            //    {
-            //    new SqlParameter{ParameterName="@Pseudo", Value = vM_UtilisateurMotDePasse.Pseudo},
-            //    new SqlParameter{ParameterName="@MotDePasse", Value = vM_UtilisateurMotDePasse.MotDePasseHache},
-            //    };
-            //    try
-            //    {
-            //        await _context.Database.ExecuteSqlRawAsync(query, parameters.ToArray());
-            //    }
-            //    catch (Exception ex)
-            //    {
-            //        throw;
-            //    }
-            //}
+           
 
             return View(await _context.Utilisateurs.ToListAsync());
         }
 
-        //// GET: EmissionTelevisions/Details/5
-        //public async Task<IActionResult> Details(int? id)
-        //{
-        //    if (id == null || _context.EmissionTelevisions == null)
-        //    {
-        //        return NotFound();
-        //    }
+        // GET: EmissionTelevisions/Details/5
+        public async Task<IActionResult> Details(int? id)
+        {
+            if (id == null || _context.Utilisateurs == null)
+            {
+                return NotFound();
+            }
 
-        //    var emissionTelevision = await _context.EmissionTelevisions
-        //        .Include(e => e.Plateforme)
-        //        .FirstOrDefaultAsync(m => m.EmissionTelevisionId == id);
-        //    if (emissionTelevision == null)
-        //    {
-        //        return NotFound();
-        //    }
+            Utilisateur user = await _context.Utilisateurs.FindAsync(id);
 
-        //    return View(emissionTelevision);
-        //}
+            VM_UtilisateurMotDePasse vM_UtilisateurMotDePasse = new VM_UtilisateurMotDePasse()
+            {
+                Pseudo = user.Pseudo,
+                NoTelephone = user.NoTelephone,
+                PlateformeId = user.PlateformeId,
+            };
+            string query = "EXEC Personne.USP_Utilisateur_Dechiffrement @UtilisateurID";
+            List<SqlParameter> parameters = new List<SqlParameter>
+            {
+                new SqlParameter{ParameterName = "@UtilisateurID", Value = id}
+            };
+            MotDePasse? motDePasse = (await _context.MotDePasses.FromSqlRaw(query, parameters.ToArray()).ToListAsync()).FirstOrDefault();
+            if(motDePasse != null)
+            {
+                ViewData["mdP"] = motDePasse.MotDePasse1;
+            }
+            vM_UtilisateurMotDePasse.MotDePasseClair = motDePasse.MotDePasse1;
+            return View(vM_UtilisateurMotDePasse);
+        }
 
         // GET: EmissionTelevisions/Create
         public IActionResult Create()

@@ -23,6 +23,7 @@ namespace ProjetFinal_2147037.Data
         public virtual DbSet<Courriel> Courriels { get; set; } = null!;
         public virtual DbSet<EmissionTelevision> EmissionTelevisions { get; set; } = null!;
         public virtual DbSet<Film> Films { get; set; } = null!;
+        public virtual DbSet<MotDePasse> MotDePasses { get; set; } = null!;
         public virtual DbSet<Personnage> Personnages { get; set; } = null!;
         public virtual DbSet<Plateforme> Plateformes { get; set; } = null!;
         public virtual DbSet<Serie> Series { get; set; } = null!;

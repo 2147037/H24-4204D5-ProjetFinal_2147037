@@ -15,6 +15,8 @@ namespace ProjetFinal_2147037.Models
         public string NoTelephone { get; set; } = null!;
         public string? MotDePasseHache { get; set; }
 
+        public string? MotDePasseClair { get; set; }
+
         [Column("PlateformeID")]
         public int PlateformeId { get; set; }
     }

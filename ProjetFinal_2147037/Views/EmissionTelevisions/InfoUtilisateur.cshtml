@@ -25,6 +25,7 @@
             <th>
                 @Html.DisplayNameFor(model => model.MotDePasseHache)
             </th>
+            <th></th>
         </tr>
     </thead>
     <tbody>
@@ -41,6 +42,9 @@
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.MotDePasseHache)
+                </td>
+                <td>
+                    <a asp-action="Details" asp-route-id="@item.UtilisateurId">Edit</a> |
                 </td>
         </tr>
 }

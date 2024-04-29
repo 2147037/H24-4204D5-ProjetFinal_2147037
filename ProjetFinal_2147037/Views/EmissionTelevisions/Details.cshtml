@@ -1,4 +1,4 @@
-﻿@model ProjetFinal_2147037.Models.EmissionTelevision
+﻿@model ProjetFinal_2147037.Models.VM_UtilisateurMotDePasse
 
 @{
     ViewData["Title"] = "Details";
@@ -12,50 +12,29 @@
     <hr />
     <dl class="row">
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Nom)
+            @Html.DisplayNameFor(model => model.Pseudo)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Nom)
+            @Html.DisplayFor(model => model.Pseudo)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Descriptions)
+            @Html.DisplayNameFor(model => model.NoTelephone)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Descriptions)
+            @Html.DisplayFor(model => model.NoTelephone)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.EstCoreen)
+            @Html.DisplayNameFor(model => model.PlateformeId)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.EstCoreen)
+            @Html.DisplayFor(model => model.PlateformeId)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Cote)
+        <dt class="col-sm-2">
+            MotDePasseClair
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Cote)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.NbVisionnement)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.NbVisionnement)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.CoutProduction)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.CoutProduction)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Plateforme)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Plateforme.PlateformeId)
+        <dd class="col-sm-10">
+            @ViewData["mdP"]
         </dd>
     </dl>
 </div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model?.EmissionTelevisionId">Edit</a> |
-    <a asp-action="Index">Back to List</a>
-</div>
+

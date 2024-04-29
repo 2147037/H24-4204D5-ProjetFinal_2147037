@@ -1,5 +1,8 @@
+CREATE TABLE Personne.MotDePasse(
+		MotDePasse nvarchar(40)
+	);
 
-
+GO
 Create PROCEDURE Personne.USP_CreationUtilisateur_Chiffrement
 	@Pseudo nvarchar(25),
 	@NoTelephone CHAR(10),
@@ -21,8 +24,9 @@ BEGIN
 
 
 END
-GO
 
+
+GO
 Create PROCEDURE Personne.USP_ModificationUtilisateur_Chiffrement
 AS
 BEGIN
@@ -47,19 +51,30 @@ Alter table Personne.Utilisateur
 Drop Column MotDePasse
 
 
---Create Function Personne.ufn_PasswordHash
---(@MotDePasse nvarchar(40))
---Returns varbianry(max)
---as
---Begin
+GO
 
---	OPEN SYMMETRIC KEY MaSuperCle
---	DECRYPTION BY CERTIFICATE MonCertificat;
+Create PROCEDURE Personne.USP_Utilisateur_Dechiffrement
+	@UtilisateurID int
+AS
+BEGIN
+	
+	Declare @MdpHache varbinary(32);
 
---	Declare @MdPHash varbinary(max) = EncryptByKey(KEY_GUID('MaSuperCle'),@MotDePasse);
+	Select @MdpHache = MotDePasseHache 
+	From Personne.Utilisateur
+	Where UtilisateurID = @UtilisateurID
 
---	Close Symmetric KEY MaSuperCle;
 
---	return @MdPHash;
---end
+	OPEN SYMMETRIC KEY MaSuperCle
+	DECRYPTION BY CERTIFICATE MonCertificat	
+	
+	Select Convert(nvarchar(40), DecryptByKey(MotDePasseHache)) AS MotDePasse
+	From Personne.Utilisateur
+	where UtilisateurID = @UtilisateurID
 
+	Close Symmetric KEY MaSuperCle
+
+	
+
+END	
+GO
