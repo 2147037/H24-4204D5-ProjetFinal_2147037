@@ -24,7 +24,16 @@ namespace ProjetFinal_2147037.Controllers
         // GET: EmissionTelevisions
         public async Task<IActionResult> Index()
         {
-            var projetFinal_2147037Context = _context.EmissionTelevisions.Include(e => e.Plateforme);
+            var projetFinal_2147037Context = _context.EmissionTelevisions.Include(e => e.Plateforme).Where(e=>e.EstCoreen == false);
+            return View(await projetFinal_2147037Context.ToListAsync());
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Index(VM_FiltreIndex vmFiltre)
+        {
+
+            var projetFinal_2147037Context = _context.EmissionTelevisions.Include(e => e.Plateforme).Where(e=>e.EstCoreen == vmFiltre.EstCoreen);
             return View(await projetFinal_2147037Context.ToListAsync());
         }
 
