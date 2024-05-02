@@ -16,6 +16,14 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = C:\Users\2147037\Downloads\H24-4204D5-ProjetFinal_2147037\ProjetFinal_2147037
 build_property._RazorSourceGeneratorDebug = 
 
+[C:/Users/2147037/Downloads/H24-4204D5-ProjetFinal_2147037/ProjetFinal_2147037/Views/EmissionTelevisions/AfficherImage.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW1pc3Npb25UZWxldmlzaW9uc1xBZmZpY2hlckltYWdlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/2147037/Downloads/H24-4204D5-ProjetFinal_2147037/ProjetFinal_2147037/Views/EmissionTelevisions/AjouterImage.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW1pc3Npb25UZWxldmlzaW9uc1xBam91dGVySW1hZ2UuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/2147037/Downloads/H24-4204D5-ProjetFinal_2147037/ProjetFinal_2147037/Views/EmissionTelevisions/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW1pc3Npb25UZWxldmlzaW9uc1xDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
@@ -26,6 +34,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/2147037/Downloads/H24-4204D5-ProjetFinal_2147037/ProjetFinal_2147037/Views/EmissionTelevisions/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW1pc3Npb25UZWxldmlzaW9uc1xEZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/2147037/Downloads/H24-4204D5-ProjetFinal_2147037/ProjetFinal_2147037/Views/EmissionTelevisions/DetailsAvancé.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW1pc3Npb25UZWxldmlzaW9uc1xEZXRhaWxzQXZhbmPDqS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/2147037/Downloads/H24-4204D5-ProjetFinal_2147037/ProjetFinal_2147037/Views/EmissionTelevisions/Edit.cshtml]

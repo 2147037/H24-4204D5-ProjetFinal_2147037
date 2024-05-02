@@ -26,7 +26,7 @@ app.UseEndpoints(endpoints =>
 {
     endpoints.MapControllerRoute(
         name:"default",
-        pattern: "{controller=EmissionTelevisions}/{action=IndexAvecViewSQL}"
+        pattern: "{controller=EmissionTelevisions}/{action=Index}"
         );
 });
 

@@ -1,0 +1,41 @@
+﻿@model List<ProjetFinal_2147037.Models.EmissionTelevision>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Liste des émissions que peut regarder  @ViewData["NomUtil"]</h1>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Nom
+            </th>
+            <th>
+                EstCoreen
+            </th>
+            <th>
+                NbVisionnement
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nom)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EstCoreen)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NbVisionnement)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

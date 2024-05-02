@@ -109,6 +109,8 @@ namespace ProjetFinal_2147037.Data
 
             modelBuilder.Entity<Utilisateur>(entity =>
             {
+                entity.Property(e => e.Identifiant).HasDefaultValueSql("(newid())");
+
                 entity.Property(e => e.NoTelephone).IsFixedLength();
 
                 entity.HasOne(d => d.Plateforme)

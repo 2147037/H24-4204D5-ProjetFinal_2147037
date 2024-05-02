@@ -7,6 +7,7 @@ using Microsoft.EntityFrameworkCore;
 namespace ProjetFinal_2147037.Models
 {
     [Table("Utilisateur", Schema = "Personne")]
+    [Index("Identifiant", Name = "UC_Utilisateur_Identifiant", IsUnique = true)]
     [Index("NoTelephone", Name = "UC_Utilisateur_NoTelephone", IsUnique = true)]
     [Index("Pseudo", Name = "UC_Utilisateur_Pseudo", IsUnique = true)]
     public partial class Utilisateur
@@ -28,6 +29,8 @@ namespace ProjetFinal_2147037.Models
         public byte[]? MotDePasseHache { get; set; }
         [Column("PlateformeID")]
         public int PlateformeId { get; set; }
+        public Guid Identifiant { get; set; }
+        public byte[]? Photo { get; set; }
 
         [ForeignKey("PlateformeId")]
         [InverseProperty("Utilisateurs")]

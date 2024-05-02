@@ -1,0 +1,28 @@
+﻿@model ProjetFinal_2147037.Models.ImageAffichageVM
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>EmissionTelevision</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.NomUtil)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.NomUtil)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ProfilePic)
+        </dt>
+        <dd class="col-sm-10">
+            <img alt="Profilepic" src="@(Model.ProfilePic == null ? "images/default.png" : Model.ProfilePic)" />
+        </dd>
+    </dl>
+</div>
+

@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
+using NuGet.Protocol.Plugins;
 using ProjetFinal_2147037.Data;
 using ProjetFinal_2147037.Models;
 
@@ -41,9 +42,85 @@ namespace ProjetFinal_2147037.Controllers
             return View(await _context.Utilisateurs.ToListAsync());
         }
 
-        // GET: EmissionTelevisions/Details/5
-        public async Task<IActionResult> Details(int? id)
+        //Pour voir la liste des utilisateurs et les émissions qu'ils peuvent voir.
+        public async Task<IActionResult> DetailsAvancé(int? id)
+        { 
+            if(id == null || _context.Utilisateurs == null)
+            {
+                return NotFound();
+            }
+            Utilisateur user = await _context.Utilisateurs.FindAsync(id);
+            ViewData["NomUtil"] = user.Pseudo;
+            string query = "EXEC Television.uspListeEmission @UtilisateurID";
+            List<SqlParameter> parameters = new List<SqlParameter>
+            {
+                new SqlParameter{ParameterName = "@UtilisateurID", Value = id}
+            };
+            List<EmissionTelevision> emissionTelevisions = await _context.EmissionTelevisions.FromSqlRaw(query, parameters.ToArray()).ToListAsync();
+            return View(emissionTelevisions);
+
+        }
+
+        public async Task<IActionResult> AfficherImage(int id)
         {
+            if (id == null || _context.Utilisateurs == null)
+            {
+                return NotFound();
+            }
+
+            Utilisateur user = await _context.Utilisateurs.FirstOrDefaultAsync(u => u.UtilisateurId == id);
+            if (user == null)
+            {
+                ModelState.AddModelError("", "Cet utilisateur n'existe pas.");
+                return View();
+            }
+
+            ImageAffichageVM affichageVM = new ImageAffichageVM();
+            affichageVM.NomUtil = user.Pseudo;
+            affichageVM.ProfilePic = user.Photo == null ? null : $"data:image/png;base64, {Convert.ToBase64String(user.Photo)}";
+
+            return View(affichageVM);
+        }
+
+        public IActionResult AjouterImage()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> AjouterImage(ImageUploadVM iuvm)
+        {
+            if(_context.Utilisateurs == null)
+            {
+                return Problem("Il n'y a pas d'utilisateur.");
+            }
+            if (ModelState.IsValid)
+            {
+                Utilisateur? user = await _context.Utilisateurs.FirstOrDefaultAsync(x => x.Pseudo== iuvm.NomUtil);
+                if (user == null)
+                {
+                    ModelState.AddModelError("NomUtil", "Ce user n'existe pas.");
+                    return View();
+                }
+                if (iuvm.FormFile != null && iuvm.FormFile.Length >= 0)
+                {
+                    MemoryStream stream = new MemoryStream();
+                    await iuvm.FormFile.CopyToAsync(stream);
+                    byte[] photo = stream.ToArray();
+                    user.Photo = photo;
+                }
+
+                await _context.SaveChangesAsync();
+                return View();
+
+            }
+            ModelState.AddModelError("", "Il y a un problème avec le fichier fourni");
+            return View();
+
+        }
+            // GET: EmissionTelevisions/Details/5
+            public async Task<IActionResult> Details(int? id)
+            {
             if (id == null || _context.Utilisateurs == null)
             {
                 return NotFound();

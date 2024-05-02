@@ -44,7 +44,9 @@
                     @Html.DisplayFor(modelItem => item.MotDePasseHache)
                 </td>
                 <td>
-                    <a asp-action="Details" asp-route-id="@item.UtilisateurId">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.UtilisateurId">Détails</a> |
+                    <a asp-action="DetailsAvancé" asp-route-id="@item.UtilisateurId">V1_4__ProcedureStockeeMasterDetail</a> |
+                    <a asp-action="AfficherImage" asp-route-id="@item.UtilisateurId">Profile Picture</a> |
                 </td>
         </tr>
 }
