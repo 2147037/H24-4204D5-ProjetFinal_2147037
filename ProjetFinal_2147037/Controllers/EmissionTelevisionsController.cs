@@ -105,7 +105,7 @@ namespace ProjetFinal_2147037.Controllers
         [HttpPost]
         public async Task<IActionResult> AjouterImage(ImageUploadVM iuvm)
         {
-            if(_context.Utilisateurs == null)
+               if(_context.Utilisateurs == null)
             {
                 return Problem("Il n'y a pas d'utilisateur.");
             }
