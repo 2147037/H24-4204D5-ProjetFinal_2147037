@@ -1,0 +1,2 @@
+CREATE NONCLUSTERED INDEX IX_EmissionTelevision_PlateformeIDEstCoreen
+ON Television.EmissionTelevision(PlateformeID, EstCoreen)

@@ -7,6 +7,7 @@ using Microsoft.EntityFrameworkCore;
 namespace ProjetFinal_2147037.Models
 {
     [Table("EmissionTelevision", Schema = "Television")]
+    [Index("PlateformeId", "EstCoreen", Name = "IX_EmissionTelevision_PlateformeIDEstCoreen")]
     public partial class EmissionTelevision
     {
         public EmissionTelevision()

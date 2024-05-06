@@ -32,8 +32,10 @@ namespace ProjetFinal_2147037.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Index(VM_FiltreIndex vmFiltre)
         {
-
-            var projetFinal_2147037Context = _context.EmissionTelevisions.Include(e => e.Plateforme).Where(e=>e.EstCoreen == vmFiltre.EstCoreen);
+            DateTime tempsAvant = DateTime.Now;
+            var projetFinal_2147037Context = _context.EmissionTelevisions.Include(e => e.Plateforme).Where(e=>e.EstCoreen == vmFiltre.EstCoreen).Where(e=>e.PlateformeId == vmFiltre.PlateformeID);
+            DateTime tempsApres = DateTime.Now;
+            ViewData["temps"] = tempsApres.Subtract(tempsAvant).TotalMilliseconds;
             return View(await projetFinal_2147037Context.ToListAsync());
         }
 

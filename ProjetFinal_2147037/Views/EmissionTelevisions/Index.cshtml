@@ -30,10 +30,14 @@
             <option value="false">False</option>
             <option value="true">True</option>
         </select>
+        <label for="PlateformeID">PlateformeID</label>
         <input min="0" max="5" name="PlateformeID" type="number" />
         <input type="submit" value="Submit">
     </fieldset>
 </form>
+<p>
+    Temps de la requête : @ViewData["temps"] millisecondes
+</p>
 
 <table class="table">
     <thead>
@@ -57,7 +61,7 @@
                 @Html.DisplayNameFor(model => model.CoutProduction)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Plateforme)
+                @Html.DisplayNameFor(model => model.Plateforme.PlateformeId)
             </th>
         </tr>
     </thead>
