@@ -33,7 +33,9 @@ namespace ProjetFinal_2147037.Controllers
         public async Task<IActionResult> Index(VM_FiltreIndex vmFiltre)
         {
             DateTime tempsAvant = DateTime.Now;
-            var projetFinal_2147037Context = _context.EmissionTelevisions.Include(e => e.Plateforme).Where(e=>e.EstCoreen == vmFiltre.EstCoreen).Where(e=>e.PlateformeId == vmFiltre.PlateformeID);
+            var projetFinal_2147037Context = _context.EmissionTelevisions.Include(e => e.Plateforme)
+                .Where(e=>e.EstCoreen == vmFiltre.EstCoreen)
+                .Where(e=>e.PlateformeId == vmFiltre.PlateformeID);
             DateTime tempsApres = DateTime.Now;
             ViewData["temps"] = tempsApres.Subtract(tempsAvant).TotalMilliseconds;
             return View(await projetFinal_2147037Context.ToListAsync());
@@ -92,11 +94,7 @@ namespace ProjetFinal_2147037.Controllers
             return View(affichageVM);
         }
 
-        public IActionResult AjouterImage()
-        {
-            return View();
-        }
-
+     
         [HttpPost]
         public async Task<IActionResult> AjouterImage(ImageUploadVM iuvm)
         {
