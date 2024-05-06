@@ -94,6 +94,13 @@ namespace ProjetFinal_2147037.Controllers
             return View(affichageVM);
         }
 
+        public async Task<IActionResult> AjouterImage(int id)
+        {
+            return View();
+
+
+        }
+
      
         [HttpPost]
         public async Task<IActionResult> AjouterImage(ImageUploadVM iuvm)
