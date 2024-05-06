@@ -12,7 +12,7 @@ namespace ProjetFinal_2147037.Models
         public Utilisateur? User { get; set; }
 
         [Required(ErrorMessage = "Il faut spécifier le nom d'utilisateur.")]
-        [DisplayName("Nom de l'utilisateur en minuscules")]
+        [DisplayName("Nom de l'utilisateur")]
         public string NomUtil { get; set; } = null!;
     }
 }
