@@ -6,7 +6,7 @@ namespace ProjetFinal_2147037.Models
     {
         public int PlateformeID { get; set; }
 
-        public bool EstCoreen { get; set; }
+        public string EstCoreen { get; set; }
 
     }
 }

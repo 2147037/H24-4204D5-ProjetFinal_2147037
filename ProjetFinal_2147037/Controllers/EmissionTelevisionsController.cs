@@ -24,7 +24,7 @@ namespace ProjetFinal_2147037.Controllers
         // GET: EmissionTelevisions
         public async Task<IActionResult> Index()
         {
-            var projetFinal_2147037Context = _context.EmissionTelevisions.Include(e => e.Plateforme).Where(e=>e.EstCoreen == false);
+            var projetFinal_2147037Context = _context.EmissionTelevisions.Include(e => e.Plateforme);
             return View(await projetFinal_2147037Context.ToListAsync());
         }
 
@@ -33,12 +33,25 @@ namespace ProjetFinal_2147037.Controllers
         public async Task<IActionResult> Index(VM_FiltreIndex vmFiltre)
         {
             DateTime tempsAvant = DateTime.Now;
-            var projetFinal_2147037Context = _context.EmissionTelevisions.Include(e => e.Plateforme)
-                .Where(e=>e.EstCoreen == vmFiltre.EstCoreen)
-                .Where(e=>e.PlateformeId == vmFiltre.PlateformeID);
+            IQueryable<EmissionTelevision> emissionFiltre= _context.EmissionTelevisions.AsQueryable();
+            if(vmFiltre.PlateformeID != 0)
+            {
+                emissionFiltre = emissionFiltre.Where(e => e.PlateformeId == vmFiltre.PlateformeID);
+            }
+            if(vmFiltre.EstCoreen != "null")
+            {
+                bool estCoreen = false;
+                if(vmFiltre.EstCoreen == "true")
+                {
+                    estCoreen = true;
+                }
+                emissionFiltre = emissionFiltre.Where(e => e.EstCoreen == estCoreen);
+            }
+            List<EmissionTelevision> emissionTelevisions = await emissionFiltre.Include(e=>e.Plateforme).ToListAsync();
+            
             DateTime tempsApres = DateTime.Now;
             ViewData["temps"] = tempsApres.Subtract(tempsAvant).TotalMilliseconds;
-            return View(await projetFinal_2147037Context.ToListAsync());
+            return View(emissionTelevisions);
         }
 
         public async Task<IActionResult> IndexAvecViewSQL()
